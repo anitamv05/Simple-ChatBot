@@ -9,7 +9,7 @@ Original file is located at
 
 
 
-pip install langchain langchain-community OpenAI
+
 
 import streamlit as st
 from langchain.prompts import PromptTemplate
