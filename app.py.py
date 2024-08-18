@@ -31,6 +31,17 @@ st.write("Ask anything and get a response from the AI!")
 # User input
 user_input = st.text_input("You: ", "Hello, who are you?")
 
+if user_input:
+    response = conversation.predict(input=user_input)
+    st.write(f"AI: {response}")
+
+# Streamlit app layout
+st.title("Chatbot Demo")
+st.write("Ask anything and get a response from the AI!")
+
+# User input
+user_input = st.text_input("You: ", "Hello, who are you?")
+
 # Generate response
 if user_input:
     response = conversation.predict(input=user_input)
