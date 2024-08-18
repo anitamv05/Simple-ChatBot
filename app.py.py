@@ -35,7 +35,7 @@ st.title("Chatbot Demo")
 st.write("Ask anything and get a response from the AI!")
 
 # User input with a unique key
-user_input = st.text_input("You: ", "Hello, whoqqqqq are you?", key="user_input")
+user_input = st.text_input("You: ", "Hello, who are you?", key="user_input")
 
 if user_input:
     response = conversation.predict(input=user_input)
