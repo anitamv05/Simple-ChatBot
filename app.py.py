@@ -6,7 +6,7 @@ from langchain import ConversationChain
 from langchain.chat_models import ChatOpenAI
 
 # Set your OpenAI API key
-os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+os.environ["OPENAI_API_KEY"] = "your-openai-api-key"
 
 # Define the conversation template and memory
 prompt_template = PromptTemplate(
@@ -28,21 +28,9 @@ conversation = ConversationChain(llm=llm, prompt=prompt_template, memory=memory)
 st.title("Chatbot Demo")
 st.write("Ask anything and get a response from the AI!")
 
-# User input
-user_input = st.text_input("You: ", "Hello, who are you?")
+# User input with a unique key
+user_input = st.text_input("You: ", "Hello, who are you?", key="user_input")
 
-if user_input:
-    response = conversation.predict(input=user_input)
-    st.write(f"AI: {response}")
-
-# Streamlit app layout
-st.title("Chatbot Demo")
-st.write("Ask anything and get a response from the AI!")
-
-# User input
-user_input = st.text_input("You: ", "Hello, who are you?")
-
-# Generate response
 if user_input:
     response = conversation.predict(input=user_input)
     st.write(f"AI: {response}")
