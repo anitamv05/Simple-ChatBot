@@ -7,11 +7,6 @@ from langchain.chat_models import ChatOpenAI
 
 # Retrieve the OpenAI API key from Streamlit Secrets
 api_key = st.secrets["OPENAI_API_KEY"]
-
-# Check if the API key is being retrieved correctly (for debugging purposes)
-st.write(f"API Key is: {api_key[:5]}...")
-
-# Set the API key for the OpenAI environment
 os.environ["OPENAI_API_KEY"] = api_key
 
 # Define the conversation template and memory
@@ -35,9 +30,13 @@ st.title("Chatbot Demo")
 st.write("Ask anything and get a response from the AI!")
 
 # User input with a unique key
-user_input = st.text_input("You: ", "Hello, who are you?", key="user_input")
+user_input = st.text_input("You: ", "", key="user_input")
 
-if user_input:
-    response = conversation.predict(input=user_input)
-    st.write(f"AI: {response}")
+if st.button("Submit"):
+    if user_input:
+        response = conversation.predict(input=user_input)
+        st.write(f"AI: {response}")
+    else:
+        st.write("Please enter a message.")
+
 
